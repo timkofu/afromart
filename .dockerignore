@@ -1,0 +1,16 @@
+doc
+lab
+.git
+.vscode
+.github
+*test_*
+Makefile
+SETUP.md
+README.md
+.githooks
+pytest.ini
+.gitignore
+**/tests/*
+.taskwarrior
+pyproject.toml
+dev_requirements.txt

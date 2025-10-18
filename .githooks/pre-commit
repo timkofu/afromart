@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Run: git config core.hooksPath `pwd`/.githooks
+
+set -e
+
+last=$(git config --local hooks.lastupdate || echo 0)
+now=$(date +%s)
+
+if (( now - last >= 86400 )); then
+  make update_all
+  git config --local hooks.lastupdate "$now"
+fi
+
+make release

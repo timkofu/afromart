@@ -1,0 +1,83 @@
+name: devops
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 8
+      matrix:
+        python-version: ["3.14"]
+
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: devops
+          POSTGRES_PASSWORD: devops
+          POSTGRES_DB: devops
+          POSTGRES_HOST: localhost
+        options: >-
+          --health-cmd "pg_isready -U devops -d devops"
+          --health-interval 3s
+          --health-timeout 2s
+          --health-retries 3
+          --health-start-period 15s
+        ports:
+          - 5432:5432
+
+      redis:
+        image: redis:latest
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping || exit 1"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 2
+          --health-start-period 10s
+    
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+      
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/dev_requirements.pip') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      
+      - name: Install Dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          python -m pip install -U pip wheel
+          pip install -r dev_requirements.pip
+      
+      - name: Run Tests
+        env:
+          CACHE_URL: redis://127.0.0.1:6379
+          DATABASE_URL: postgres://devops:devops@localhost:5432/devops
+        run: make test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - uses: actions/checkout@v5
+      
+      - name: Deploy to Fly.io
+        uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}

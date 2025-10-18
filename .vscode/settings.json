@@ -1,0 +1,84 @@
+{
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "always"
+    },
+    "editor.quickSuggestions": {
+        "strings": "on"
+    },
+    "workbench.editorAssociations": {
+        "*.md": "vscode.markdown.preview.editor"
+    },
+    "python.analysis.indexing": false,
+    "python.languageServer": "Pylance",
+    "editor.suggestSelection": "first",
+    "python.analysis.autoSearchPaths": true,
+    "editor.acceptSuggestionOnEnter": "smart",
+    "python.analysis.typeCheckingMode": "strict",
+    "python.analysis.diagnosticMode": "openFilesOnly",
+    "python.analysis.autoImportCompletions": false,
+    "python.analysis.useLibraryCodeForTypes": true,
+    "python.analysis.completeFunctionParens": false,
+    "python.defaultInterpreterPath": ".venv/bin/python",
+    "python.analysis.extraPaths": [
+        "./afromart"
+    ],
+    "python.autoComplete.extraPaths": [
+        "./afromart"
+    ],
+    "python.analysis.include": [
+        "./afromart/**"
+    ],
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.codeActionsOnSave": {
+            "source.fixAll.ruff": "explicit",
+            "source.organizeImports.ruff": "explicit"
+        }
+    },
+    "ruff.nativeServer": "on",
+    "files.associations": {
+        "*.html": "django-html"
+    },
+    "emmet.includeLanguages": {
+        "django-html": "html"
+    },
+    "html-css-class-completion.HTMLLanguages": [
+        "django-html"
+    ],
+    "html-css-class-completion.includeGlobPattern": "afromart/**/*.{css,html}",
+    "html-css-class-completion.excludeGlobPattern": "**/{__pycache__}/**",
+    "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
+    "emmet.showAbbreviationSuggestions": false,
+    "emmet.triggerExpansionOnTab": true,
+    "search.exclude": {
+        "**/.venv": true,
+        "**/__pycache__": true,
+        "**/node_modules": true,
+    },
+    "files.exclude": {
+        "uv.lock": true,
+        "**/*.egg*": true,
+        ".taskwarrior": true,
+        "*requirements.pip": true,
+    },
+    "files.watcherExclude": {
+        "**/.git/**": true,
+        "**/.venv/**": true,
+        "**/.taskwarrior/**": true,
+        "**/.pytest_cache/**": true,
+    },
+    "breadcrumbs.enabled": false,
+    "editor.fontFamily": "0xProto Nerd Font Mono",
+    "editor.inlineSuggest.fontFamily": "0xProto Nerd Font Mono",
+    "editor.occurrencesHighlight": "off",
+    "editor.renderLineHighlight": "none",
+    "editor.lightbulb.enabled": "off",
+    "editor.glyphMargin": false,
+    "python.analysis.ignore": [
+        "*"
+    ],
+    "python.analysis.inlayHints.functionReturnTypes": false,
+    "python.analysis.inlayHints.variableTypes": false,
+    "editor.suggest.preview": false
+}

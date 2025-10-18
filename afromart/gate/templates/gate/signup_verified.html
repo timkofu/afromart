@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="mt-3">
+        {% load static %}
+        <div class="display-6 mt-3 mt-sm-1">
+            <img src="{% static 'img/'|add:project_name|lower|add:'.png' %}"
+                 alt="{{ project_name|capfirst }}"
+                 width="34"
+                 height="34">
+            Verified!
+        </div>
+        <div class="fs-5 mt-3">
+            Now you can <a href="{% url 'gate:signin' %}" class="text-decoration-none">Sign In</a>.
+        </div>
+    </div>
+{% endblock content %}

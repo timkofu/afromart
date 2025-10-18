@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="{{ project_description }}">
+        {% include "ogp.html" %}
+        {% include "favicon.html" %}
+        <title>{{ project_name }}</title>
+        {% load static %}
+        <link rel="preload"
+              href="{% static 'css/ui.css' %}"
+              as="style"
+              onload="this.rel='stylesheet'">
+        <link rel="preload"
+              href="{% static 'css/ui-icons.css' %}"
+              as="style"
+              onload="this.rel='stylesheet'">
+    </head>
+    <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+        <div class="container" id="container">
+            {% if user.is_authenticated %}
+                <form action="{% url 'gate:signout' %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button class="fw-bold nav-link">
+                        Sign Out <i class="bi bi-box-arrow-right"></i>
+                    </button>
+                </form>
+            {% endif %}
+            {% if messages %}
+                <div class="container mt-3" aria-live="polite" aria-atomic="true">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show"
+                             role="alert">
+                            {{ message }}
+                            <button type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% block content %}
+                <h1 class="mt-2">
+                    {{ project_name }} <i class="bi bi-heart"></i>
+                </h1>
+            {% endblock content %}
+            <footer class="mt-3">
+                <span class="fw-bold small text-muted">
+                    © {% now "Y" %} {{ project_name }} | <a href="mailto:{{ contact_email }}" class="text-decoration-none">Contact Email</a>
+                </span>
+            </footer>
+        </div>
+        <script src="{% static 'js/ui.js' %}"></script>
+        <script src="{% static 'js/dune.js' %}"></script>
+        <script src="{% static 'js/spice.js' %}"></script>
+        {% if debug %}
+            {% load django_htmx %}
+            {% django_htmx_script %}
+        {% endif %}
+        <script>
+            $(document).ready(function(){
+                $('[data-bs-toggle="tooltip"]').tooltip();
+
+                $(function() {
+                    $('form').submit(function() {
+                        $(this).find('button[type="submit"]').html(
+                        `
+                            <div class="spinner-border text-accent spinner-border-sm" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        `
+                        ).prop('disabled', true);
+                        return true;
+                    });
+                });
+
+                {% block javascript %}
+                {% endblock javascript %}
+            });
+        </script>
+        <noscript>
+            <h1>Please use a modern browser.</h1>
+        </noscript>
+    </body>
+</html>

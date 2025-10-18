@@ -1,0 +1,38 @@
+app = "afromart"
+primary_region = "fra"
+
+
+[processes]
+sgi = "gunicorn afromart.wsgi:application --bind 0.0.0.0:65535 --workers 4 --worker-class gthread --threads 4 --max-requests 1024 --max-requests-jitter 144 --timeout 89 --keep-alive 34 --access-logfile - --error-logfile -"
+
+
+[http_service]
+processes = ["sgi"]
+force_https = true
+internal_port = 65535
+auto_stop_machines = "stop"
+auto_start_machines = true
+min_machines_running = 0
+kill_timeout = 180
+
+[http_service.concurrency]
+type = "requests"
+soft_limit = 89
+hard_limit = 144
+
+
+[deploy]
+strategy = "canary"
+release_command = "python manage.py migrate"
+
+
+[[vm]]
+cpus = 2
+memory = "1024mb"
+cpu_kind = "shared"
+processes = ["sgi"]
+
+
+[[statics]]
+url_prefix = "/static"
+guest_path = "/app/static"

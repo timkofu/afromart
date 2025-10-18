@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="mt-3">
+        {% load static %}
+        <div class="display-6 mt-3 mt-sm-1">
+            <img src="{% static 'img/'|add:project_name|lower|add:'.png' %}"
+                 alt="{{ project_name|capfirst }}"
+                 width="34"
+                 height="34">
+            Welcome!
+        </div>
+        <div class="fs-5 mt-3">Please check your inbox for a verification email 📧</div>
+    </div>
+{% endblock content %}
