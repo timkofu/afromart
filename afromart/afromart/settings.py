@@ -69,6 +69,10 @@ INSTALLED_APPS = [
     "django.contrib.humanize",
     # App
     "gate.apps.GateConfig",
+    "trader.apps.TraderConfig",
+    "payment.apps.PaymentConfig",
+    "shipping.apps.ShippingConfig",
+    "catalogue.apps.CatalogueConfig",
     # 3rd Party
     "django_htmx",
 ]
