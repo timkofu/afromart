@@ -72,7 +72,7 @@ INSTALLED_APPS = [
     "trader.apps.TraderConfig",
     "payment.apps.PaymentConfig",
     "shipping.apps.ShippingConfig",
-    "catalogue.apps.CatalogueConfig",
+    "product.apps.ProductConfig",
     # 3rd Party
     "django_htmx",
 ]
