@@ -1,49 +1,44 @@
-// _colors.logo-derived.scss (eCommerce-optimized)
-// Bootstrap 5.3 — theme color tokens derived from the provided logo,
-// tuned for an eCommerce web app: CTAs, trust, urgency, accessibility.
-// Generated from: /mnt/data/logo.png
-// Rationale: gold/orange is used as the primary CTA (high-conversion hue),
-// green remains the brand/trust color, red used for destructive/urgency cues.
+// _colors.logo-derived.scss (Brand-first: green primary)
+// Bootstrap 5.3 — theme color tokens derived from your logo, optimized for eCommerce
+// Primary color = green (brand-first); Secondary = gold/orange accent.
 
 // -------------------------
-// PRIMARY — CTA (gold/orange)
-// Rationale: warm golden/orange hues convert well for action buttons (Add to cart, Buy now)
-$primary-100: #fff8e6;
-$primary-200: #fde7b8;
-$primary-300: #fbd789;
-$primary-400: #f9c95b;
-$primary-500: #f7b92d;
-$primary-600: #d6900e; // recommended as $primary (CTA base)
-$primary-700: #a46b0b;
-$primary-800: #744907;
-$primary-900: #452804;
+// PRIMARY — Brand / Trust (green)
+// Rationale: green conveys trust, growth, and calm confidence — excellent for brand identity and checkout reassurance.
+$primary-100: #eef8ef;
+$primary-200: #d6f0d3;
+$primary-300: #bce8b7;
+$primary-400: #9de09b;
+$primary-500: #7fd97f;
+$primary-600: #4a9b56; // recommended as $primary (brand base)
+$primary-700: #35763f;
+$primary-800: #254f2c;
+$primary-900: #133118;
 
-// SECONDARY — Brand / Trust (green)
-// Rationale: green signals trust, natural/eco feel (good for product trust, badges)
-$secondary-100: #eef8ef;
-$secondary-200: #d6f0d3;
-$secondary-300: #bce8b7;
-$secondary-400: #9de09b;
-$secondary-500: #7fd97f;
-$secondary-600: #4a9b56; // recommended as $secondary (brand accent)
-$secondary-700: #35763f;
-$secondary-800: #254f2c;
-$secondary-900: #133118;
+// SECONDARY — CTA (gold/orange)
+// Rationale: warm golden tones attract attention and make excellent secondary CTAs (Buy now, Add to cart).
+$secondary-100: #fff8e6;
+$secondary-200: #fde7b8;
+$secondary-300: #fbd789;
+$secondary-400: #f9c95b;
+$secondary-500: #f7b92d;
+$secondary-600: #d6900e; // recommended as $secondary
+$secondary-700: #a46b0b;
+$secondary-800: #744907;
+$secondary-900: #452804;
 
 // SUCCESS — confirmations, delivered state
-// Rationale: slightly brighter green than brand for successful actions/messages
 $success-100: #eefbe9;
 $success-200: #d6f6d3;
 $success-300: #bff0bb;
 $success-400: #9feaa2;
 $success-500: #7fe27f;
-$success-600: #38a84f; // recommended as $success
+$success-600: #38a84f;
 $success-700: #2d7f3d;
 $success-800: #1f5829;
 $success-900: #123417;
 
 // DANGER / ERROR (red)
-// Rationale: use a deep, saturated red for destructive actions but reserve for errors and true urgency
 $danger-100: #fff1ef;
 $danger-200: #ffd0c8;
 $danger-300: #ffad9f;
@@ -54,18 +49,18 @@ $danger-700: #992f18;
 $danger-800: #6b210f;
 $danger-900: #401308;
 
-// INFO — neutral info state (subtle bluish-green to not clash with gold/green)
+// INFO — subtle aqua tone for neutral messages
 $info-100: #f2fbfa;
 $info-200: #dff6f4;
 $info-300: #c9efe9;
 $info-400: #b2e7dd;
 $info-500: #99dfd2;
-$info-600: #49bfb4; // a calm aqua-ish tone for info
+$info-600: #49bfb4;
 $info-700: #358b77;
 $info-800: #265a4f;
 $info-900: #13362a;
 
-// NEUTRALS — Bootstrap style gray scale for UI surfaces
+// GRAYS / NEUTRALS
 $gray-100: #f8f9fa;
 $gray-200: #f1f3f5;
 $gray-300: #e9ecef;
@@ -76,7 +71,6 @@ $gray-700: #495057;
 $gray-800: #343a40;
 $gray-900: #212529;
 
-// STRONG contrast tokens
 $light-100: $gray-100;
 $dark-900: $gray-900;
 $black: #000000;
@@ -84,17 +78,15 @@ $white: #ffffff;
 
 // -------------------------
 // Bootstrap core variables
-// Assign semantic tokens tuned for eCommerce
-$primary: $primary-600; // CTA (Buy / Add to cart)
-$secondary: $secondary-600; // Brand accent, trust indicators
-$success: $success-600; // confirmations, success states
-$info: $info-600; // informational banners
-$warning: $primary-500; // use warm gold for mild warnings (promos, low-stock hints)
-$danger: $danger-600; // errors, destructive actions
+$primary: $primary-600; // green brand base
+$secondary: $secondary-600; // gold/orange CTAs
+$success: $success-600;
+$info: $info-600;
+$warning: $secondary-500;
+$danger: $danger-600;
 $light: $light-100;
 $dark: $dark-900;
 
-// Theme map for Bootstrap components
 $theme-colors: (
     "primary": $primary,
     "secondary": $secondary,
@@ -107,15 +99,13 @@ $theme-colors: (
 );
 
 // -------------------------
-// Interaction tokens (hover / active / disabled)
-// Keep hover as a moderate darkening for clear affordance; active slightly stronger.
+// Interaction tokens
 $primary-hover: mix($primary-700, $primary-600, 85%);
 $primary-active: mix($primary-800, $primary-600, 80%);
 $secondary-hover: mix($secondary-700, $secondary-600, 85%);
 $secondary-active: mix($secondary-800, $secondary-600, 80%);
 $disabled-color: $gray-400;
 
-// CSS custom properties for runtime and third-party components
 :root {
     --bs-primary: #{$primary};
     --bs-primary-hover: #{$primary-hover};
@@ -132,7 +122,6 @@ $disabled-color: $gray-400;
 
 // -------------------------
 // Accessibility helpers
-// Contrast-aware foreground recommendations
 $color-contrast-map: (
     $primary: if(lightness($primary) > 50%, $dark-900, $white),
         $secondary: if(lightness($secondary) > 50%, $dark-900, $white),
@@ -142,7 +131,6 @@ $color-contrast-map: (
                         $danger: if(lightness($danger) > 50%, $dark-900, $white)
                         );
 
-                    // Mixin to build accessible buttons quickly
                     @mixin btn-accessible($bg, $bg-hover: null, $fg: null) {
                         $fg: if($fg ==null, if(lightness($bg) > 50%, $dark-900, $white), $fg);
                         background-color: $bg;
@@ -163,30 +151,14 @@ $color-contrast-map: (
                         }
                     }
 
-                    // Example usage notes (do not copy into compiled CSS directly) —
-                    // .btn-primary { @include btn-accessible($primary, $primary-hover); }
-                    // .btn-secondary { @include btn-accessible($secondary, $secondary-hover); }
-
                     // -------------------------
-                    // Practical recommendations for your eCommerce app
+                    // Practical use in your eCommerce app
                     // -------------------------
-                    // 1) Use $primary for primary CTAs: Add to cart, Buy now, Checkout. Gold/orange attracts attention and converts well.
-                    // 2) Reserve $secondary (green) for trust signals: verified badges, eco labels, shipping/stats and loyalty accents.
-                    // 3) Use $success for confirmations and microcopy (order success, payment confirmed).
-                    // 4) Use $danger sparingly for destructive actions (Cancel order, Delete account) and clear error messages.
-                    // 5) Use neutrals ($gray-100..900) for backgrounds, cards, product lists and subtle borders. Price typography should be high contrast (use $dark or $black for price numbers).
-                    // 6) Focus rings: prefer a slightly darker tint of the component color (we provided hover/active tokens) combined with an accessible outline (2px solid with 3px blur if desired).
-                    // 7) Test CTAs with white text on $primary (the chosen $primary-600 provides enough contrast in default; if you have very small text, consider $primary-700 for better contrast).
-                    // 8) Consider A/B testing: gold CTAs (this file) vs. brand-green primary — many stores get small but measurable differences depending on audience.
-
-                    // -------------------------
-                    // Notes & next steps
-                    // -------------------------
-                    // - I updated the canvas file with these eCommerce-optimized tokens. Import this file before Bootstrap's variables so the build picks up the values.
-                    // - If you'd like I can:
-                    //    • flip primary to green (brand-first) and make gold a secondary accent,
-                    //    • produce full 10- or 12-step scales used by design systems,
-                    //    • generate a CSS variables-only version (for runtime theming), or
-                    //    • output example components (buttons, badges) using the tokens for you to preview.
+                    // 1) Use green ($primary) for brand prominence: navbar, highlights, checkout reassurance.
+                    // 2) Use gold/orange ($secondary) for CTAs (Buy / Add to cart) — high conversion and visual energy.
+                    // 3) Maintain white or light-neutral backgrounds to let colors pop.
+                    // 4) Test hover contrast — gold/orange buttons with white text remain readable.
+                    // 5) Keep destructive actions red, success confirmations bright green.
+                    // 6) Consider subtle gradients mixing $primary-600 → $primary-700 for hero banners.
 
                     // End of file
