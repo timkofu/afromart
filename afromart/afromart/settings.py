@@ -70,7 +70,7 @@ INSTALLED_APPS = [
     # App
     "gate.apps.GateConfig",
     "trader.apps.TraderConfig",
-    "payment.apps.PaymentConfig",
+    "order.apps.OrderConfig",
     "shipping.apps.ShippingConfig",
     "product.apps.ProductConfig",
     # 3rd Party
