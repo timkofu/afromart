@@ -1,0 +1,11 @@
+// _fonts.scss
+// System-first font stack (native only)
+$font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !default;
+$font-family-base: $font-family-sans-serif !default;
+$headings-font-family: $font-family-sans-serif !default;
+
+// Weights and typography scales (tweak if needed)
+$font-weight-base: 400 !default; // body
+$headings-font-weight: 600 !default; // h1..h6
+$font-size-base: 1rem !default; // equals 16px when root is 16px
+$line-height-base: 1.5 !default;
