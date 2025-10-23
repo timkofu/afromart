@@ -9,11 +9,11 @@
         <title>{{ project_name }}</title>
         {% load static %}
         <link rel="preload"
-              href="{% static 'css/ui.css' %}"
+              href="{% static 'css/bootstrap.css' %}"
               as="style"
               onload="this.rel='stylesheet'">
         <link rel="preload"
-              href="{% static 'css/ui-icons.css' %}"
+              href="{% static 'css/bootstrap-icons.css' %}"
               as="style"
               onload="this.rel='stylesheet'">
     </head>
@@ -53,32 +53,33 @@
                 </span>
             </footer>
         </div>
-        <script src="{% static 'js/ui.js' %}"></script>
-        <script src="{% static 'js/dune.js' %}"></script>
-        <script src="{% static 'js/spice.js' %}"></script>
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+        <script src="{% static 'js/htmx.js' %}"></script>
         {% if debug %}
             {% load django_htmx %}
             {% django_htmx_script %}
         {% endif %}
         <script>
-            $(document).ready(function(){
-                $('[data-bs-toggle="tooltip"]').tooltip();
+            document.addEventListener('DOMContentLoaded', function() {
+                // Initialize all tooltips
+                const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+                const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
-                $(function() {
-                    $('form').submit(function() {
-                        $(this).find('button[type="submit"]').html(
-                        `
-                            <div class="spinner-border text-accent spinner-border-sm" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        `
-                        ).prop('disabled', true);
+                // Handle form submissions
+                document.querySelectorAll('form').forEach(function(form) {
+                    form.addEventListener('submit', function() {
+                        const submitButton = this.querySelector('button[type="submit"]');
+                        if (submitButton) {
+                            submitButton.innerHTML = `
+                                <div class="spinner-border text-accent spinner-border-sm" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            `;
+                            submitButton.disabled = true;
+                        }
                         return true;
                     });
                 });
-
-                {% block javascript %}
-                {% endblock javascript %}
             });
         </script>
         <noscript>

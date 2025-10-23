@@ -21,13 +21,12 @@ dbshell:
 
 update_ui_components:
 	@cd third_party/ui && npm update
-	@sass -q third_party/ui/scss/app.scss afromart/static_global/css/ui.css --style compressed --no-source-map
-	@cat third_party/ui/node_modules/bootstrap-icons/font/bootstrap-icons.min.css > afromart/static_global/css/ui-icons.css
+	@sass -q third_party/ui/scss/app.scss afromart/static_global/css/bootstrap.css --style compressed --no-source-map
+	@cat third_party/ui/node_modules/bootstrap-icons/font/bootstrap-icons.min.css > afromart/static_global/css/bootstrap-icons.css
 	@cp -ru third_party/ui/node_modules/bootstrap-icons/font/fonts afromart/static_global/css/
-	@cat third_party/ui/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js > afromart/static_global/js/ui.js
-	@sed --in-place '$$d' afromart/static_global/js/ui.js
-	@cat third_party/ui/node_modules/htmx.org/dist/htmx.min.js > afromart/static_global/js/dune.js
-	@cat third_party/ui/node_modules/jquery/dist/jquery.min.js > afromart/static_global/js/spice.js
+	@cat third_party/ui/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js > afromart/static_global/js/bootstrap.js
+	@sed --in-place '/^\/\/# sourceMappingURL=/d' afromart/static_global/js/bootstrap.js
+	@cat third_party/ui/node_modules/htmx.org/dist/htmx.min.js > afromart/static_global/js/htmx.js
 
 update_all:
 	@uv lock --upgrade

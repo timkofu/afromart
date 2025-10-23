@@ -1,8 +1,7 @@
 {
   "dependencies": {
-    "jquery": "latest",
-    "htmx.org": "latest",
     "bootstrap": "latest",
-    "bootstrap-icons": "latest"
+    "bootstrap-icons": "latest",
+    "htmx.org": "latest"
   }
 }
