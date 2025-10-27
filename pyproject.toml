@@ -1,7 +1,7 @@
 [project]
 name = "afromart"
 version = "0.1"
-description = "The marketplace for Africa."
+description = "Africa's marketplace."
 authors = [{ name = "Timothy Makobu", email = "timothy@makobu.name" }]
 readme = "README.md"
 

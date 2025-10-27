@@ -11,7 +11,7 @@ from django.contrib.messages import constants as messages
 
 PROJECT_NAME = "afromart"  # Needs to be lowercase
 DOMAIN_NAME = "afromart.trade"
-PROJECT_DESCRIPTION = "The marketplace for Africa."
+PROJECT_DESCRIPTION = "Africa's marketplace."
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent

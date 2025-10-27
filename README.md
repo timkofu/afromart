@@ -1,3 +1,3 @@
 # Afromart
 
-**The marketplace for Africa.**
+**Africa's marketplace.**

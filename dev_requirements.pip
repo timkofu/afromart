@@ -52,7 +52,7 @@ jsbeautifier==1.15.4
     #   djlint
 json5==0.12.1
     # via djlint
-matplotlib-inline==0.1.7
+matplotlib-inline==0.2.1
     # via ipython
 packaging==25.0
     # via
@@ -68,7 +68,7 @@ pluggy==1.6.0
     # via pytest
 prompt-toolkit==3.0.52
     # via ipython
-psycopg==3.2.11
+psycopg==3.2.12
     # via afromart
 ptyprocess==0.7.0 ; sys_platform != 'emscripten' and sys_platform != 'win32'
     # via pexpect

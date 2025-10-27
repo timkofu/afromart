@@ -4,6 +4,7 @@ lab
 .vscode
 .github
 *test_*
+uv.lock
 Makefile
 SETUP.md
 README.md
